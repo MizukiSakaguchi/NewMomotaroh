@@ -9,20 +9,13 @@ namespace SalesManagementApp
     class ItemDao
     {
 
-        SqlConnection connection = new SqlConnection();
-
-        
-
         //商品を一覧するDao
         public List<ItemDto> DisplayItem()
         {
-            connection.ConnectionString
-                = System.Configuration
-                .ConfigurationManager
-                .ConnectionStrings["SalesManagementApp.Properties.Settings.connectDB"]
-                .ConnectionString;
             //DB接続
-            connection.Open();
+            ConnectDB connectDB = new ConnectDB();
+            SqlConnection connection = connectDB.connectDB();
+            
             List<ItemDao> list = new List<ItemDao>();
             SqlCommand command = new SqlCommand();
 
@@ -69,13 +62,9 @@ namespace SalesManagementApp
 
         public ItemDto UpdateItem(ItemDto item)
         {
-            connection.ConnectionString
-                = System.Configuration
-                .ConfigurationManager
-                .ConnectionStrings["SalesManagementApp.Properties.Settings.connectDB"]
-                .ConnectionString;
             //DB接続
-            connection.Open();
+            ConnectDB connectDB = new ConnectDB();
+            SqlConnection connection = connectDB.connectDB();
 
             SqlCommand command = new SqlCommand();
 
@@ -101,9 +90,9 @@ namespace SalesManagementApp
 
                 int num = command.ExecuteNonQuery();
 
-                if (num > 0)
+                if (num < 0)
                 {
-                    return true;
+                    return false;
                 }
             }catch(SqlException e)
             {
@@ -115,6 +104,7 @@ namespace SalesManagementApp
                 command.Close();
                 connection.Close();
             }
+            return true;
         }
     }
 }

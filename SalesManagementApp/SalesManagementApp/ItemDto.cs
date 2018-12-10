@@ -6,14 +6,14 @@ using System.Threading.Tasks;
 
 namespace SalesManagementApp
 {
-    class ItemDto
+    public class ItemDto
     {
         public string Id { get; set; }
         public string Name { get; set; }
         public CategoryDto Category { get; set; }
         public int Price { get; set; }
         public CustomerDto Customer { get; set; }
-        public StockDto Strock { get; set; }
+        public StockDto Stock { get; set; }
 
         public ItemDto(string id, string name, CategoryDto category, int price)
         {

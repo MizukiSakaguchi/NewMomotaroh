@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SalesManagementApp
 {
-    class SaleDto
+    public class SaleDto
     {
         public string Id { get; set; }
         public CustomerDto Customer { get; set; }

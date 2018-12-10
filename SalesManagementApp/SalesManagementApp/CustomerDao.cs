@@ -39,11 +39,7 @@ namespace SalesManagementApp
                 reader["TEL"].ToString()));
                 reader.Close();
                 }
-
-                if(result > 0)
-                {
-                    return true;
-                }
+                
             }
             catch (SqlException e)
             {

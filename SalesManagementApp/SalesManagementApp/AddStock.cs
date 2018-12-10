@@ -10,6 +10,11 @@ using System.Windows.Forms;
 
 namespace SalesManagementApp
 {
+    /**
+     * label6.商品ID　7.商品名　8.カテゴリ　
+     * label9.単価　11.エラーメッセージ　13.最終更新日
+     * textBox1.数量
+     */
     public partial class AddStock : Form
     {
         public AddStock()

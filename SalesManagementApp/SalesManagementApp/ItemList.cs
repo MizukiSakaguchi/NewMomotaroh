@@ -10,6 +10,10 @@ using System.Windows.Forms;
 
 namespace SalesManagementApp
 {
+
+    /**
+     * label1.商品ID　2.商品名　3.カテゴリ　4.単価　11.在庫数     * 
+     */
     public partial class ItemList : Form
     {
         public ItemList()

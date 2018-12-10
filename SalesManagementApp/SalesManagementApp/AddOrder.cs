@@ -10,6 +10,10 @@ using System.Windows.Forms;
 
 namespace SalesManagementApp
 {
+    /**
+     * label5.商品ID　6.商品名　7.カテゴリ　8.単価　12.エラーメッセージ
+     * textBox1.顧客　2.注文
+     */
     public partial class AddOrder : Form
     {
         public AddOrder()

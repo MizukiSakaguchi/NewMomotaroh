@@ -83,6 +83,7 @@
       <DependentUpon>SearchCustomer.cs</DependentUpon>
     </Compile>
     <Compile Include="StockDto.cs" />
+    <Compile Include="Validator.cs" />
     <EmbeddedResource Include="AddStock.resx">
       <DependentUpon>AddStock.cs</DependentUpon>
     </EmbeddedResource>

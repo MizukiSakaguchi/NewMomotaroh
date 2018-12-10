@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace SalesManagementApp
 {
-    public partial class Form3 : Form
+    public partial class ChangeStock : Form
     {
-        public Form3()
+        public ChangeStock()
         {
             InitializeComponent();
         }

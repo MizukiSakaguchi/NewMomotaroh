@@ -1,6 +1,6 @@
 ﻿namespace SalesManagementApp
 {
-    partial class Form1
+    partial class ItemList
     {
         /// <summary>
         /// 必要なデザイナー変数です。

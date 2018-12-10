@@ -19,6 +19,9 @@ namespace SalesManagementApp
         public ItemList()
         {
             InitializeComponent();
+
+            ItemDao dao = new ItemDao();
+            dao.DisplayItem();
         }
                 
         //注文
@@ -45,7 +48,7 @@ namespace SalesManagementApp
         //商品リスト内のアイテムを選択したとき
         private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            ItemDao dao = new ItemDao();
+            
         }
     }
 }

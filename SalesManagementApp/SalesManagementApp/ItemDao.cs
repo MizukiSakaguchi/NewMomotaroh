@@ -13,7 +13,7 @@ namespace SalesManagementApp
         public List<ItemDto> DisplayItem()
         {
             //DB接続
-            ConnectDB connectDB = new ConnectDB();
+            DBHelper connectDB = new DBHelper();
             SqlConnection connection = connectDB.connectDB();
             
             List<ItemDao> list = new List<ItemDao>();
@@ -63,7 +63,7 @@ namespace SalesManagementApp
         public ItemDto UpdateItem(ItemDto item)
         {
             //DB接続
-            ConnectDB connectDB = new ConnectDB();
+            DBHelper connectDB = new DBHelper();
             SqlConnection connection = connectDB.connectDB();
 
             SqlCommand command = new SqlCommand();
@@ -92,7 +92,7 @@ namespace SalesManagementApp
 
                 if (num < 0)
                 {
-                    return false;
+                    return null;
                 }
             }catch(SqlException e)
             {
@@ -104,7 +104,7 @@ namespace SalesManagementApp
                 command.Close();
                 connection.Close();
             }
-            return true;
+            return item;
         }
     }
 }

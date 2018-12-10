@@ -10,9 +10,14 @@ using System.Windows.Forms;
 
 namespace SalesManagementApp
 {
-    public partial class ChangeStock : Form
+    /**
+     * label5.商品名　7.エラーメッセージ
+     * textBox1.商品名　2.単価
+     * comboBox1.カテゴリ
+     */
+    public partial class ChangeItem : Form
     {
-        public ChangeStock()
+        public ChangeItem()
         {
             InitializeComponent();
         }

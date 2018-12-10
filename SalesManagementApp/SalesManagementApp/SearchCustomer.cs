@@ -10,6 +10,9 @@ using System.Windows.Forms;
 
 namespace SalesManagementApp
 {
+    /**
+     * label4.顧客ID　5.顧客名　6.tel
+     */
     public partial class SearchCustomer : Form
     {
         public SearchCustomer()
@@ -25,6 +28,12 @@ namespace SalesManagementApp
 
         //キャンセル
         private void button2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        //顧客リスト内の顧客をクリックしたとき
+        private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }

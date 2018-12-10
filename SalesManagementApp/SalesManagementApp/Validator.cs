@@ -48,12 +48,13 @@ namespace SalesManagementApp
             return true;
         }
 
-        public bool StockOver(int val, ItemDao item)
+        public bool StockOver(int val, ItemDto item)
         {
-            if(item.)
+            if(item.Stock.Num < val)
             {
-
+                return false;
             }
+            return true;
         }
     }
 }

@@ -27,19 +27,21 @@ namespace SalesManagementApp
         //変更
         private void button4_Click(object sender, EventArgs e)
         {
-
+            ChangeItem item = new ChangeItem();
+            item.Show();
         }
 
         //在庫数追加
         private void button1_Click(object sender, EventArgs e)
         {
-
+            AddStock stock = new AddStock();
+            stock.Show();
         }
 
         //商品リスト内のアイテムを選択したとき
         private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+            ItemDao dao = new ItemDao();
         }
     }
 }

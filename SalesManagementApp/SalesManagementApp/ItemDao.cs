@@ -60,6 +60,7 @@ namespace SalesManagementApp
                 //close処理
                 reader.Close();
                 command.Close();
+                connection.Close();
             }
 
             return list;
@@ -77,31 +78,42 @@ namespace SalesManagementApp
             connection.Open();
 
             SqlCommand command = new SqlCommand();
-            //実行するsql文の登録
-            command.CommandText = $"UPDATE ItemTable " +
-                $"SET Name = @name, Price = @price, CategoryID = @categoryId " +
-                $"WHERE ItemID = @item_id; ";
-            command.CommandType = CommandType.Text;
 
-            command.Parameters.Add("@name", SqlDbType.NVarChar, 50);
-            command.Parameters["@name"].Value = item.Name;
-
-            command.Parameters.Add("@price", SqlDbType.Int);
-            command.Parameters["@price"].Value = item.Price;
-
-
-            //Connection情報の登録
-            command.Connection = connection;
-
-            int num = command.ExecuteNonQuery();
-
-            if (num > 0)
+            try
             {
-                label2.Text = "更新しました";
+                //実行するsql文の登録
+                command.CommandText = $"UPDATE ItemTable " +
+                    $"SET Name = @name, Price = @price, CategoryID = @categoryId " +
+                    $"WHERE ItemID = @item_id; ";
+                command.CommandType = CommandType.Text;
+
+                command.Parameters.Add("@name", SqlDbType.NVarChar, 20);
+                command.Parameters["@name"].Value = item.Name;
+
+                command.Parameters.Add("@price", SqlDbType.Int);
+                command.Parameters["@price"].Value = item.Price;
+
+                command.Parameters.Add("@categoryId", SqlDbType.NVarChar, 5);
+                command.Parameters["@categoryId"].Value = item.Category.Id;
+                
+                //Connection情報の登録
+                command.Connection = connection;
+
+                int num = command.ExecuteNonQuery();
+
+                if (num > 0)
+                {
+                    return true;
+                }
+            }catch(SqlException e)
+            {
+                Console.WriteLine(e);
+
             }
-            else
+            finally
             {
-                label2.Text = "更新できませんでした";
+                command.Close();
+                connection.Close();
             }
         }
     }

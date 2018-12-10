@@ -8,5 +8,6 @@ namespace SalesManagementApp
 {
     class ConnectDB
     {
+        
     }
 }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SalesManagementApp
 {
-    class SaleHandler
+    class SaleService
     {
     }
 }

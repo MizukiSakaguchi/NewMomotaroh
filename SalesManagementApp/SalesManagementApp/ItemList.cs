@@ -26,5 +26,23 @@ namespace SalesManagementApp
         {
 
         }
+
+        //注文
+        private void button3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        //変更
+        private void button4_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        //在庫数追加
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

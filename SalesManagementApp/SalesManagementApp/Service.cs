@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SalesManagementApp
 {
-    interface Handler
+    interface Service
     {
     }
 }

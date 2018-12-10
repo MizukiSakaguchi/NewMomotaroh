@@ -10,7 +10,10 @@ namespace SalesManagementApp
     {
         public bool SetOn(string str)
         {
+            if()
+            {
 
+            }
         }
 
         public bool IsMinus(int val)

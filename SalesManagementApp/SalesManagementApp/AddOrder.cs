@@ -16,5 +16,23 @@ namespace SalesManagementApp
         {
             InitializeComponent();
         }
+
+        //顧客選択
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        //注文
+        private void button2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        //キャンセル
+        private void button3_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

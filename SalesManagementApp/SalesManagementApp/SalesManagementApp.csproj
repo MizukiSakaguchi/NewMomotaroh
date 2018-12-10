@@ -68,11 +68,11 @@
     <Compile Include="ItemList.Designer.cs">
       <DependentUpon>ItemList.cs</DependentUpon>
     </Compile>
-    <Compile Include="ChangeStock.cs">
+    <Compile Include="ChangeItem.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ChangeStock.Designer.cs">
-      <DependentUpon>ChangeStock.cs</DependentUpon>
+    <Compile Include="ChangeItem.Designer.cs">
+      <DependentUpon>ChangeItem.cs</DependentUpon>
     </Compile>
     <Compile Include="AddOrder.cs">
       <SubType>Form</SubType>
@@ -101,8 +101,8 @@
     <EmbeddedResource Include="ItemList.resx">
       <DependentUpon>ItemList.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ChangeStock.resx">
-      <DependentUpon>ChangeStock.cs</DependentUpon>
+    <EmbeddedResource Include="ChangeItem.resx">
+      <DependentUpon>ChangeItem.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="AddOrder.resx">
       <DependentUpon>AddOrder.cs</DependentUpon>

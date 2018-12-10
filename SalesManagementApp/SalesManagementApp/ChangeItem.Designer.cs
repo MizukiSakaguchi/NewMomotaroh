@@ -1,6 +1,6 @@
 ﻿namespace SalesManagementApp
 {
-    partial class ChangeStock
+    partial class ChangeItem
     {
         /// <summary>
         /// Required designer variable.

@@ -54,7 +54,6 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "label1";
             this.label1.Visible = false;
-            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // label2
             // 
@@ -159,6 +158,7 @@
             this.listBox1.Name = "listBox1";
             this.listBox1.Size = new System.Drawing.Size(187, 268);
             this.listBox1.TabIndex = 13;
+            this.listBox1.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
             // 
             // label12
             // 
@@ -211,7 +211,6 @@
             this.Controls.Add(this.label1);
             this.Name = "ItemList";
             this.Text = "注文システム";
-            this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

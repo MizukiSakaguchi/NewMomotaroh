@@ -16,21 +16,12 @@ namespace SalesManagementApp
         {
             InitializeComponent();
         }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Form1_Load(object sender, EventArgs e)
-        {
-
-        }
-
+                
         //注文
         private void button3_Click(object sender, EventArgs e)
         {
-
+            AddOrder order = new AddOrder();
+            order.Show();
         }
 
         //変更
@@ -41,6 +32,12 @@ namespace SalesManagementApp
 
         //在庫数追加
         private void button1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        //商品リスト内のアイテムを選択したとき
+        private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }

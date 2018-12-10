@@ -26,8 +26,8 @@ namespace SalesManagementApp.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=C:\\Users\\Administrator\\Deskto" +
-            "p\\Sales.mdf;Integrated Security=True;Connect Timeout=30")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=192.168.100.108\\SQLEXPRESS;Initial Catalog=Momotaroh;Integrated Secur" +
+            "ity=True")]
         public string connectDB {
             get {
                 return ((string)(this["connectDB"]));

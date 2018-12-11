@@ -45,6 +45,8 @@ namespace SalesManagementApp
 
             //CategoryDtoのインスタンス作成
             ItemList itemList = new ItemList();
+            List<ItemDto> items = new List<ItemDto>();
+            items = itemList.ListInItem;
             CategoryDto categoryDto = new CategoryDto(itemList.sendData.Id , itemList.sendData.Name);
             ItemDto itemDto = new ItemDto(itemId , name , categoryDto , price);
 
@@ -71,6 +73,21 @@ namespace SalesManagementApp
         {
             ItemList itemList = new ItemList();
             itemList.Show();
+        }
+
+        private void AddOrder_Load(object sender, EventArgs e)
+        {
+            ItemList itemList = new ItemList();
+            ItemDto itemDto = new ItemDto(null , null , null , 0);
+            itemDto = itemList.ItemDto;
+            label5.Text = itemDto.Id.ToString();
+            label5.Visible = true;
+            label6.Text = itemDto.Name.ToString();
+            label6.Visible = true;
+            label7.Text = itemDto.Category.Name.ToString();
+            label7.Visible = true;
+            label8.Text = itemDto.Price.ToString();
+            label8.Visible = true;
         }
     }
 }

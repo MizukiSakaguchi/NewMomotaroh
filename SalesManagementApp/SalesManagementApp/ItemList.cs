@@ -16,7 +16,8 @@ namespace SalesManagementApp
      */
     public partial class ItemList : Form
     {
-        List<ItemDto> ListInItem {get; set;}
+        public List<ItemDto> ListInItem {get; set;}
+        public ItemDto ItemDto { get; set; }
         CategoryDto category;
 
         public ItemList()
@@ -51,9 +52,9 @@ namespace SalesManagementApp
             category = ListInItem[listBox1.SelectedIndex].Category;
             int price = ListInItem[listBox1.SelectedIndex].Price;
 
-            ItemDto dto = new ItemDto(id, name, category, price);
+            ItemDto = new ItemDto(id, name, category, price);
 
-            AddStock stock = new AddStock(dto);
+            AddStock stock = new AddStock(ItemDto);
             stock.Show();
         }
 
@@ -88,5 +89,7 @@ namespace SalesManagementApp
                 return category;
             }
         }
+
+      
     }
 }

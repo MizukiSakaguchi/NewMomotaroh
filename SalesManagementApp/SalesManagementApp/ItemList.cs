@@ -45,7 +45,14 @@ namespace SalesManagementApp
         //在庫数追加
         private void button1_Click(object sender, EventArgs e)
         {
-            AddStock stock = new AddStock();
+            string id = list[listBox1.SelectedIndex].Id;
+            string name = list[listBox1.SelectedIndex].Name;
+            CategoryDto category = list[listBox1.SelectedIndex].Category;
+            int price = list[listBox1.SelectedIndex].Price;
+
+            ItemDto dto = new ItemDto(id, name, category, price);
+
+            AddStock stock = new AddStock(dto);
             stock.Show();
         }
 

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -20,6 +21,38 @@ namespace SalesManagementApp
         public AddStock()
         {
             InitializeComponent();
+        }
+
+        public AddStock(ItemDto item)
+        {
+            DBHelper dBHelper = new DBHelper();
+            SqlConnection connection = dBHelper.ConnectDB();
+
+            SqlCommand command = new SqlCommand();
+
+            command.CommandText = $"SELECT * FROM StockTable " +
+                                    $"WHERE ItemID = '{item.Id}' ORDER BY DESC";
+
+            command.Connection = connection;
+
+            SqlDataReader reader;
+            reader = command.ExecuteReader();
+            try
+            {
+                reader.Read();
+
+                SimpleDateFormat sdf = new SimpleDateFormat("yyyy年MM月dd日");
+                label13.Text = reader["Date"].ToString;
+            }
+            catch
+            {
+
+            }
+
+            label6.Text = $"{item.Id}";
+            label7.Text = $"{item.Name}";
+            label8.Text = $"{item.Category.Name}";
+            label9.Text = $"{item.Price}";
         }
 
         //追加

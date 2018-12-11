@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,9 +11,9 @@ namespace SalesManagementApp
     {
         public SqlConnection ConnectDB()
         {
+            SqlConnection connection = new SqlConnection();
             try
             {
-                SqlConnection connection = new SqlConnection();
                 connection.ConnectionString
                     = System.Configuration
                     .ConfigurationManager
@@ -20,12 +21,12 @@ namespace SalesManagementApp
                     .ConnectionString;
                 //DB接続
                 connection.Open();
-                return connection;
             }
             catch (SqlException e)
             {
                 Console.WriteLine(e);
             }
+            return connection;
         }
 
         public void CloseDB(SqlConnection connection)

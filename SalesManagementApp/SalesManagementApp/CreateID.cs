@@ -63,6 +63,8 @@ namespace SalesManagementApp
         public string CreateStrockID()
         {
             string result = null;
+
+            SqlCommand command = new SqlCommand();
             //DB接続
             SqlConnection connection = new SqlConnection();
             
@@ -80,9 +82,8 @@ namespace SalesManagementApp
             {
                 Console.WriteLine(e);
             }
-            SqlCommand command = new SqlCommand();
-            //Connection情報の登録
-            command.Connection = connection;
+            
+            
             //検索結果取得用のオブジェクトを用意
             SqlDataReader sqlReader = null;
             try
@@ -91,7 +92,8 @@ namespace SalesManagementApp
                 //実行するプロシージャの登録
                 command.CommandText = "SELECT * FROM StockTable ORDER BY StockID DESC;";
                 command.CommandType = CommandType.Text;
-                
+                //Connection情報の登録
+                command.Connection = connection;
                 //sqlの実行
                 sqlReader = command.ExecuteReader();
 

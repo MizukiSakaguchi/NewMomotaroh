@@ -52,7 +52,9 @@ namespace SalesManagementApp
                 //実行するプロシージャの登録
                 command.CommandText = $"SELECT * FROM ItemTable " +
                                         $"INNER JOIN CategoriesTable ON ItemTable.CategoryID = CategoriesTable.CategoryID " +
-                                        $"INNER JOIN StockTable ON ItemTable.ItemID = StockTable.ItemID ;";
+                                        $"INNER JOIN (SELECT ItemID, MAX(Date) FROM StockTable GROUP BY ItemID)" +
+                                        $" ON ItemTable.ItemID = StockTable.ItemID " +
+                                        $" AND ItemTable.Item";
                 command.CommandType = CommandType.Text;
                 
                 //クエリの実行
@@ -67,7 +69,7 @@ namespace SalesManagementApp
                         (reader["ItemID"].ToString(), reader["Name"].ToString(), category, Convert.ToInt32(reader["Price"]));
                     
                     
-                    DateTime date = DateTime.Parse(reader["Date"].ToString());
+                    DateTime date = DateTime.Parse(reader["MAX(Date)"].ToString());
                     StockDto stock = new StockDto(resultID, dto, Convert.ToInt32(reader["Number"]), date);
                     dto.Stock = stock;
                     list.Add(dto);

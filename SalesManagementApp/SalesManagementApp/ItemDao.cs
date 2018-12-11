@@ -43,7 +43,7 @@ namespace SalesManagementApp
             try
             {                
                 //実行するプロシージャの登録
-                command.CommandText = "SELECT ItemTable.ItemID, ItemTable.ItemName, ItemTable.CategoryID, " +
+                command.CommandText = "SELECT ItemTable.ItemID, ItemTable.Name, ItemTable.CategoryID, " +
                                         "CategoriesTable.CategoryName, ItemTable.Price FROM ItemTable " +
                                         "INNER JOIN CategoriesTable ON ItemTable.CategoryID = CategoriesTable.CategoryID;";
                 command.CommandType = CommandType.Text;
@@ -56,7 +56,7 @@ namespace SalesManagementApp
                 {
                     CategoryDto category = new CategoryDto(reader["ItemTable.CategoryID"].ToString(), reader["CategoriesTable.CategoryName"].ToString());
                     ItemDto dto = new ItemDto
-                        (reader["ItemID"].ToString(), reader["ItemTable.Name"].ToString(), category, Convert.ToInt32(reader["ItemTable,Price"]));
+                        (reader["ItemID"].ToString(), reader["ItemTable.Name"].ToString(), category, Convert.ToInt32(reader["ItemTable.Price"]));
                     list.Add(dto);
                 }
 

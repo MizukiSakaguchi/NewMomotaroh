@@ -15,7 +15,7 @@ namespace SalesManagementApp
      */
     public partial class SearchCustomer : Form
     {
-        public List<CustomerDto> customerList { get; private set; }
+        public List<CustomerDto> CustomerList { get; private set; }
 
         public SearchCustomer()
         {
@@ -23,35 +23,57 @@ namespace SalesManagementApp
 
         }
         CustomerDao customerDao = new CustomerDao();
+        string name = null;
 
         //ロードした時の表示
         private void SearchCustomer_Load(object sender, EventArgs e)
         {
 
             var CustomerList = new List<CustomerDto>();
-            customerList = customerDao.DisplayCustomer();
-            foreach (var b in customerList)
+            this.CustomerList = customerDao.DisplayCustomer();
+            foreach (var b in this.CustomerList)
             {
-                listBox1.Items.Add($"b.Id.ToString() : b.Name.ToString()");
+                listBox1.Items.Add($"{b.Id.ToString()} : {b.Name.ToString()}");
             }
         }
 
         //顧客の選択
         private void button1_Click(object sender, EventArgs e)
         {
+            
+            AddOrder addOrder = new AddOrder();
+            name = CustomerList[listBox1.SelectedIndex].Name;
+            addOrder.Show();
 
         }
 
         //キャンセル
         private void button2_Click(object sender, EventArgs e)
         {
-
+            AddOrder addOrder = new AddOrder();
+            addOrder.Show();
         }
 
         //顧客リスト内の顧客をクリックしたとき
         private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+            label1.Text = $"{CustomerList[listBox1.SelectedIndex].Id}";
+            label1.Visible = true;
+            label2.Text = $"{CustomerList[listBox1.SelectedIndex].Name}";
+            label2.Visible = true;
+            label3.Text = $"{CustomerList[listBox1.SelectedIndex].Tel}";
+            label3.Visible = true;
         }
+
+        //顧客の名前を返却するメソッド.
+        public string sendData
+        {
+            get
+            {
+                return name;
+            }
+        }
+
+    
     }
 }

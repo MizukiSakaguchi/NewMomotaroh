@@ -15,12 +15,28 @@ namespace SalesManagementApp
      */
     public partial class SearchCustomer : Form
     {
+        public List<CustomerDto> customerList { get; private set; }
+
         public SearchCustomer()
         {
             InitializeComponent();
+
+        }
+        CustomerDao customerDao = new CustomerDao();
+
+        //ロードした時の表示
+        private void SearchCustomer_Load(object sender, EventArgs e)
+        {
+
+            var CustomerList = new List<CustomerDto>();
+            customerList = customerDao.DisplayCustomer();
+            foreach (var b in customerList)
+            {
+                listBox1.Items.Add($"b.Id.ToString() : b.Name.ToString()");
+            }
         }
 
-        //追加
+        //顧客の選択
         private void button1_Click(object sender, EventArgs e)
         {
 

@@ -142,6 +142,7 @@
             this.Controls.Add(this.listBox1);
             this.Name = "SearchCustomer";
             this.Text = "顧客検索";
+            this.Load += new System.EventHandler(this.SearchCustomer_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

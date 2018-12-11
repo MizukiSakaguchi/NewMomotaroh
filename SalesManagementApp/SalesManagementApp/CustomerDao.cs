@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -31,7 +32,7 @@ namespace SalesManagementApp
                 com.Connection = con;
 
                 SqlDataReader reader;
-                reader = command.ExecuteReader();
+                reader = com.ExecuteReader();
 
             while (reader.Read())
                {

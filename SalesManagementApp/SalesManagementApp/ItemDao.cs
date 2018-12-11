@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,9 +16,9 @@ namespace SalesManagementApp
         {
             //DB接続
             DBHelper connectDB = new DBHelper();
-            SqlConnection connection = connectDB.connectDB();
+            SqlConnection connection = connectDB.ConnectDB();
             
-            List<ItemDao> list = new List<ItemDao>();
+            List<ItemDto> list = new List<ItemDto>();
             SqlCommand command = new SqlCommand();
 
             try
@@ -36,10 +38,8 @@ namespace SalesManagementApp
                 //値の取得
                 while (reader.Read())
                 {
-                    list.Add(reader["ItemID"].ToString());
-                    list.Add(reader["Name"].ToString());
-                    list.Add(reader["Price"].ToInt32());
-                    list.Add(reader["CategoryID"].ToString());
+                    ItemDto dto = new ItemDto
+                        (reader["ItemID"].ToString(), reader["Name"].ToString(), reader["CategoryID"].ToString(), Convert.ToInt32(reader["Price"]));
 
                 }
 

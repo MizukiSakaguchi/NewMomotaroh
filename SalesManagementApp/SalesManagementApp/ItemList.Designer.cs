@@ -211,6 +211,7 @@
             this.Controls.Add(this.label1);
             this.Name = "ItemList";
             this.Text = "注文システム";
+            this.Load += new System.EventHandler(this.ItemList_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

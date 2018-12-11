@@ -66,5 +66,10 @@ namespace SalesManagementApp
             label11.Text = $"{list[listBox1.SelectedIndex].Stock.Num}";
             label11.Visible = true;                        
         }
+
+        private void ItemList_Load(object sender, EventArgs e)
+        {
+           
+        }
     }
 }

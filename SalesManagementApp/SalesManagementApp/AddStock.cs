@@ -50,7 +50,8 @@ namespace SalesManagementApp
                 DateTime lastUpDate = DateTime.Parse(reader["Date"].ToString());
                 string upDate = lastUpDate.ToLongDateString();
 
-                label13.Text = $"{upDate}";              
+                label13.Text = $"{upDate}";
+                label13.Visible = true;
             }
             catch(SqlException e)
             {
@@ -58,9 +59,13 @@ namespace SalesManagementApp
             }
 
             label6.Text = $"{item.Id}";
+            label6.Visible = true;
             label7.Text = $"{item.Name}";
+            label7.Visible = true;
             label8.Text = $"{item.Category.Name}";
+            label8.Visible = true;
             label9.Text = $"{item.Price}";
+            label9.Visible = true;
         }
 
         //追加

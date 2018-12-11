@@ -28,6 +28,18 @@ namespace SalesManagementApp
         //変更
         private void button1_Click(object sender, EventArgs e)
         {
+            string id = label5.Text;
+            string name = textBox1.Text;
+            int price = Convert.ToInt32(textBox2.Text);
+
+            string selectCategory = comboBox1.SelectedItem.ToString();
+            string[] categoryNameList = selectCategory.Split(':');
+            string categoryId = categoryNameList[0];
+            string categoryName = categoryNameList[1];
+            CategoryDto category = new CategoryDto(categoryId,categoryName);
+
+            ItemDto item = new ItemDto(id, name, category, price);
+
             ItemDao itemDao = new ItemDao();
             ItemDto changeItem = itemDao.UpdateItem(item);
             if(changeItem != null)
@@ -50,7 +62,10 @@ namespace SalesManagementApp
 
         private void ChangeItem_Load(object sender, EventArgs e)
         {
-            ItemList itemList = new ItemList();
+            label5.Text = item.Id;
+            label5.Visible = true;
+            textBox1.Text = item.Name;
+            textBox2.Text = item.Price.ToString();
 
         }
     }

@@ -50,8 +50,8 @@ namespace SalesManagementApp
             {
                 
                 //実行するプロシージャの登録
-                command.CommandText = $"SELECT * FROM CategoriesTable " +
-                                        $"INNER JOIN ItemTable ON ItemTable.CategoryID = CategoriesTable.CategoryID " +
+                command.CommandText = $"SELECT * FROM ItemTable " +
+                                        $"INNER JOIN CategoriesTable ON ItemTable.CategoryID = CategoriesTable.CategoryID " +
                                         $"INNER JOIN StockTable ON ItemTable.ItemID = StockTable.ItemID ;";
                 command.CommandType = CommandType.Text;
                 

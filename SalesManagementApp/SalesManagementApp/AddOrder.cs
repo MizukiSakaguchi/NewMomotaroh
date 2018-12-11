@@ -47,9 +47,7 @@ namespace SalesManagementApp
             int number = int.Parse(textBox2.Text);
 
             //CategoryDtoのインスタンス作成
-            List<ItemDto> items = new List<ItemDto>();
-            items = itemList.ListInItem;
-            CategoryDto categoryDto = new CategoryDto(itemList.sendData.Id , itemList.sendData.Name);
+            CategoryDto categoryDto = new CategoryDto(itemList.ItemDto.Category.Id , itemList.ItemDto.Category.Name);
             ItemDto itemDto = new ItemDto(itemId , name , categoryDto , price);
 
             //CustomerDaoのインスタンス作成
@@ -87,6 +85,11 @@ namespace SalesManagementApp
             label7.Visible = true;
             label8.Text = itemDto.Price.ToString();
             label8.Visible = true;
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

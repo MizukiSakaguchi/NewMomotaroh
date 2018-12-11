@@ -21,11 +21,10 @@ namespace SalesManagementApp
             List<ItemDto> list = new List<ItemDto>();
             SqlCommand command = new SqlCommand();
 
+            command.Connection = connection;
 
             //検索結果取得用のオブジェクトを用意
-            SqlDataReader reader;
-            //クエリの実行
-            reader = command.ExecuteReader();
+            SqlDataReader reader = null;
             try
             {
                 
@@ -35,12 +34,15 @@ namespace SalesManagementApp
                 //Connection情報の登録
                 command.Connection = connection;
 
+                //クエリの実行
+                reader = command.ExecuteReader();
 
                 //値の取得
                 while (reader.Read())
                 {
                     ItemDto dto = new ItemDto
                         (reader["ItemID"].ToString(), reader["Name"].ToString(), (CategoryDto)reader["CategoryID"], Convert.ToInt32(reader["Price"]));
+                    list.Add(dto);
                 }
 
             }

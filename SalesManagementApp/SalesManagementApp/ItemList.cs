@@ -27,6 +27,7 @@ namespace SalesManagementApp
             ItemDao dao = new ItemDao();
             ListInItem = dao.DisplayItem();
 
+            listBox1.Items.Clear();
             ListInItem.ForEach(v => listBox1.Items.Add($"{v.Id}：{v.Name}"));
         }
                 

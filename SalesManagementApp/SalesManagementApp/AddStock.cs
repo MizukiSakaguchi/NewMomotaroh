@@ -76,7 +76,19 @@ namespace SalesManagementApp
             StockDto dto = new StockDto(null, itemDto, stockNum, DateTime.Now);
 
             StockDao dao = new StockDao();
-            dao.InsertStock(dto);
+
+            //Dao実行結果を確認する変数を用意
+            bool result;
+            result = dao.InsertStock(dto);
+
+            if(result)
+            {
+                label13.ForeColor = Color.Black;
+                label13.Text = "追加に成功しました。";
+                label13.Visible = true;
+            }
+            label13.Text = "追加に失敗しました。";
+            label13.Visible = true;
         }
 
         //キャンセル

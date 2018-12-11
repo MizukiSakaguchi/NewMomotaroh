@@ -54,6 +54,7 @@
       <DependentUpon>AddStock.cs</DependentUpon>
     </Compile>
     <Compile Include="CategoryDto.cs" />
+    <Compile Include="CreateID.cs" />
     <Compile Include="DBHelper.cs" />
     <Compile Include="CustomerDao.cs" />
     <Compile Include="CustomerDto.cs" />

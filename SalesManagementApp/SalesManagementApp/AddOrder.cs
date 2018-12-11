@@ -17,6 +17,7 @@ namespace SalesManagementApp
     public partial class AddOrder : Form
     {
         private ItemList itemList;
+        private SearchCustomer SearchCustomer;
         public AddOrder(ItemList itemList)
         {
             InitializeComponent();
@@ -52,9 +53,8 @@ namespace SalesManagementApp
             ItemDto itemDto = new ItemDto(itemId , name , categoryDto , price);
 
             //CustomerDaoのインスタンス作成
-            SearchCustomer searchCustomer = new SearchCustomer();
             CustomerDto customerDto = new CustomerDto(null , null , null);
-            customerDto = searchCustomer.sendData;
+            customerDto = SearchCustomer.sendData;
             
             //SaleDtoのインスタンス作成
             SaleDto saleDto = new SaleDto(null , customerDto , number , itemDto);

@@ -24,7 +24,7 @@ namespace SalesManagementApp
         }
         CustomerDao customerDao = new CustomerDao();
 
-        CustomerDto customerDto;
+        public CustomerDto customerDto;
         string id = null;
         string name = null;
         string tel = null;

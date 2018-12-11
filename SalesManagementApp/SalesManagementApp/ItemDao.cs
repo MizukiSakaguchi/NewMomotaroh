@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,11 +16,16 @@ namespace SalesManagementApp
         {
             //DB接続
             DBHelper connectDB = new DBHelper();
-            SqlConnection connection = connectDB.connectDB();
+            SqlConnection connection = connectDB.ConnectDB();
             
-            List<ItemDao> list = new List<ItemDao>();
+            List<ItemDto> list = new List<ItemDto>();
             SqlCommand command = new SqlCommand();
 
+
+            //検索結果取得用のオブジェクトを用意
+            SqlDataReader reader;
+            //クエリの実行
+            reader = command.ExecuteReader();
             try
             {
                 
@@ -28,19 +35,12 @@ namespace SalesManagementApp
                 //Connection情報の登録
                 command.Connection = connection;
 
-                //検索結果取得用のオブジェクトを用意
-                SqlDataReader reader;
-                //クエリの実行
-                reader = command.ExecuteReader();
 
                 //値の取得
                 while (reader.Read())
                 {
-                    list.Add(reader["ItemID"].ToString());
-                    list.Add(reader["Name"].ToString());
-                    list.Add(reader["Price"].ToInt32());
-                    list.Add(reader["CategoryID"].ToString());
-
+                    ItemDto dto = new ItemDto
+                        (reader["ItemID"].ToString(), reader["Name"].ToString(), (CategoryDto)reader["CategoryID"], Convert.ToInt32(reader["Price"]));
                 }
 
             }
@@ -52,7 +52,6 @@ namespace SalesManagementApp
             {
                 //close処理
                 reader.Close();
-                command.Close();
                 connection.Close();
             }
 
@@ -64,7 +63,7 @@ namespace SalesManagementApp
         {
             //DB接続
             DBHelper connectDB = new DBHelper();
-            SqlConnection connection = connectDB.connectDB();
+            SqlConnection connection = connectDB.ConnectDB();
 
             SqlCommand command = new SqlCommand();
 
@@ -101,7 +100,6 @@ namespace SalesManagementApp
             }
             finally
             {
-                command.Close();
                 connection.Close();
             }
             return item;

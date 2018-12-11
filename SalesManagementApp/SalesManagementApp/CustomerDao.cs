@@ -32,7 +32,7 @@ namespace SalesManagementApp
                 com.Connection = con;
 
                 SqlDataReader reader;
-                reader = command.ExecuteReader();
+                reader = com.ExecuteReader();
 
                 while (reader.Read())
                 {

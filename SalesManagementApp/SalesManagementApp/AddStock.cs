@@ -41,8 +41,10 @@ namespace SalesManagementApp
             {
                 reader.Read();
 
-                SimpleDateFormat sdf = new SimpleDateFormat("yyyy年MM月dd日");
-                label13.Text = reader["Date"].ToString;
+                DateTime lastUpDate = DateTime.Parse(reader["Date"].ToString());
+                string upDate = lastUpDate.ToLongDateString();
+
+                label13.Text = $"{upDate}";              
             }
             catch
             {
@@ -64,7 +66,7 @@ namespace SalesManagementApp
         //キャンセル
         private void button2_Click(object sender, EventArgs e)
         {
-
+            
         }
     }
 }

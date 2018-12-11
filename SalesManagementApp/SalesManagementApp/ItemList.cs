@@ -39,7 +39,8 @@ namespace SalesManagementApp
         //変更ボタン
         private void button4_Click(object sender, EventArgs e)
         {
-            ChangeItem item = new ChangeItem();
+            ItemActiva
+            ChangeItem item = new ChangeItem(this);
             item.Show();
         }
 

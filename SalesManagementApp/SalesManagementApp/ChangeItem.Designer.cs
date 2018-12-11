@@ -150,7 +150,7 @@
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
-            // ChangeStock
+            // ChangeItem
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -167,8 +167,9 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Name = "ChangeStock";
+            this.Name = "ChangeItem";
             this.Text = "商品変更";
+            this.Load += new System.EventHandler(this.ChangeItem_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

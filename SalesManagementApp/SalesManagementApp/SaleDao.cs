@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace SalesManagementApp
 {
-    class SaleDao
+    public class SaleDao
     {
 
         /**
@@ -19,9 +19,10 @@ namespace SalesManagementApp
         {
             SqlConnection con = new SqlConnection();
 
-            con.ConnectionString = System.Configuration.ConfigurationManager.ConnectionStrings
-                ["SalesManagementApp.Properties.Settings.connectDB"].ConnectionString;
-
+            //con.ConnectionString = System.Configuration.ConfigurationManager.ConnectionStrings
+            //   ["SalesManagementApp.Properties.Settings.connectDB"].ConnectionString;
+            con.ConnectionString =
+                        "Data Source = 192.168.100.108\SQLEXPRESS; Initial Catalog = Momotaroh; Integrated Security = True";"
             CreateID create = new CreateID();
             string createId = null;
             try

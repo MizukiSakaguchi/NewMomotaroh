@@ -18,15 +18,16 @@ namespace SalesManagementApp
         public bool InsertSale(SaleDto sale)
         {
             SqlConnection con = new SqlConnection();
-
+            
             con.ConnectionString = System.Configuration.ConfigurationManager.ConnectionStrings
                 ["SalesManagementApp.Properties.Settings.connectDB"].ConnectionString;
+            con.Open();
 
             CreateID create = new CreateID();
             string createId = null;
             try
             {
-                con.Open();
+                
 
                 SqlCommand com = new SqlCommand();
 

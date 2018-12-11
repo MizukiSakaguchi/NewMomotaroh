@@ -17,7 +17,7 @@ namespace SalesManagementApp
     public partial class AddOrder : Form
     {
         private ItemList itemList;
-        private SearchCustomer SearchCustomer;
+        private SearchCustomer searchCustomer;
         public AddOrder(ItemList itemList)
         {
             InitializeComponent();
@@ -27,8 +27,9 @@ namespace SalesManagementApp
         //顧客選択
         private void button1_Click(object sender, EventArgs e)
         {
-            SearchCustomer searchCustomer = new SearchCustomer();
-            searchCustomer.Show();
+            searchCustomer = new SearchCustomer();
+            searchCustomer.ShowDialog();
+            textBox1.Text = searchCustomer.sendData.Name;
         }
 
         //注文
@@ -51,8 +52,7 @@ namespace SalesManagementApp
             ItemDto itemDto = new ItemDto(itemId , name , categoryDto , price);
 
             //CustomerDaoのインスタンス作成
-            CustomerDto customerDto = new CustomerDto(null , null , null);
-            customerDto = SearchCustomer.sendData;
+            CustomerDto customerDto = searchCustomer.sendData;
             
             //SaleDtoのインスタンス作成
             SaleDto saleDto = new SaleDto(null , customerDto , number , itemDto);
@@ -85,6 +85,8 @@ namespace SalesManagementApp
             label7.Visible = true;
             label8.Text = itemDto.Price.ToString();
             label8.Visible = true;
+            
+            
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)

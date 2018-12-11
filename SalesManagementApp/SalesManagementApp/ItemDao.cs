@@ -15,9 +15,23 @@ namespace SalesManagementApp
         public List<ItemDto> DisplayItem()
         {
             //DB接続
-            DBHelper connectDB = new DBHelper();
-            SqlConnection connection = connectDB.ConnectDB();
-            
+            SqlConnection connection = new SqlConnection();
+            try
+            {
+                connection.ConnectionString
+                    = System.Configuration
+                    .ConfigurationManager
+                    .ConnectionStrings["SalesManagementApp.Properties.Settings.connectDB"]
+                    .ConnectionString;
+                //DB接続
+                connection.Open();
+            }
+            catch (SqlException e)
+            {
+                Console.WriteLine(e);
+            }
+
+
             List<ItemDto> list = new List<ItemDto>();
             SqlCommand command = new SqlCommand();
 

@@ -22,7 +22,8 @@ namespace SalesManagementApp
             con.ConnectionString = System.Configuration.ConfigurationManager.ConnectionStrings
                 ["SalesManagementApp.Properties.Settings.connectDB"].ConnectionString;
 
-
+            CreateID create = new CreateID();
+            string createId = null;
             try
             {
                 con.Open();
@@ -33,8 +34,8 @@ namespace SalesManagementApp
                                     $"VALUES(@id, @customerId, @num, @itemId)";
 
                 com.Parameters.Add("@id", SqlDbType.NVarChar, 5);
-
-                com.Parameters["@id"].Value = sale.Id;
+                createId = create.CreateSaleID();
+                com.Parameters["@id"].Value = createId;
                 com.Parameters.Add("@customerId", SqlDbType.NVarChar, 4);
                 com.Parameters["@customerId"].Value = sale.Customer.Id;
                 com.Parameters.Add("@num", SqlDbType.Int);

@@ -45,21 +45,19 @@ namespace SalesManagementApp
         private void button1_Click(object sender, EventArgs e)
         {
             
-            AddOrder addOrder = new AddOrder();
             id = CustomerList[listBox1.SelectedIndex].Id;
             name = CustomerList[listBox1.SelectedIndex].Name;
             tel = CustomerList[listBox1.SelectedIndex].Tel;
-           customerDto = new CustomerDto(id, name, tel);
+            customerDto = new CustomerDto(id, name, tel);
 
-            addOrder.Show();
+            this.Close();
 
         }
 
         //キャンセル
         private void button2_Click(object sender, EventArgs e)
         {
-            AddOrder addOrder = new AddOrder();
-            addOrder.Show();
+            this.Close();
         }
 
         //顧客リスト内の顧客をクリックしたとき

@@ -229,6 +229,7 @@
             this.Controls.Add(this.label1);
             this.Name = "AddOrder";
             this.Text = "注文";
+            this.Load += new System.EventHandler(this.AddOrder_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -16,7 +16,8 @@ namespace SalesManagementApp
      */
     public partial class ItemList : Form
     {
-        List<ItemDto> ListInItem {get; set;}
+        public List<ItemDto> ListInItem {get; set;}
+        public ItemDto ItemDto { get; set; }
         CategoryDto category;
 
         public ItemList()
@@ -26,13 +27,20 @@ namespace SalesManagementApp
             ItemDao dao = new ItemDao();
             ListInItem = dao.DisplayItem();
 
+            listBox1.Items.Clear();
             ListInItem.ForEach(v => listBox1.Items.Add($"{v.Id}：{v.Name}"));
         }
                 
         //注文ボタン
         private void button3_Click(object sender, EventArgs e)
         {
-            AddOrder order = new AddOrder();
+            string id = ListInItem[listBox1.SelectedIndex].Id.ToString();
+            string name = ListInItem[listBox1.SelectedIndex].Name.ToString();
+            CategoryDto category = ListInItem[listBox1.SelectedIndex].Category;
+            int price = ListInItem[listBox1.SelectedIndex].Price;
+
+            ItemDto = new ItemDto(id, name, category, price);
+            AddOrder order = new AddOrder(this);
             order.Show();
         }
 
@@ -52,9 +60,9 @@ namespace SalesManagementApp
             CategoryDto category = ListInItem[listBox1.SelectedIndex].Category;
             int price = ListInItem[listBox1.SelectedIndex].Price;
 
-            ItemDto dto = new ItemDto(id, name, category, price);
+            ItemDto = new ItemDto(id, name, category, price);
 
-            AddStock stock = new AddStock(dto);
+            AddStock stock = new AddStock(ItemDto);
             stock.Show();
         }
 
@@ -89,5 +97,7 @@ namespace SalesManagementApp
                 return category;
             }
         }
+
+      
     }
 }

@@ -18,7 +18,6 @@ namespace SalesManagementApp
     {
         public List<ItemDto> ListInItem {get; set;}
         public ItemDto ItemDto { get; set; }
-        CategoryDto category;
 
         public ItemList()
         {

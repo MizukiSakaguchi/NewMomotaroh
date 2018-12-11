@@ -65,10 +65,12 @@ namespace SalesManagementApp
                     
                     ItemDto dto = new ItemDto
                         (reader["ItemID"].ToString(), reader["Name"].ToString(), category, Convert.ToInt32(reader["Price"]));
-                    list.Add(dto);
+                    
                     
                     DateTime date = DateTime.Parse(reader["Date"].ToString());
                     StockDto stock = new StockDto(resultID, dto, Convert.ToInt32(reader["Number"]), date);
+                    dto.Stock = stock;
+                    list.Add(dto);
                 }
 
             }

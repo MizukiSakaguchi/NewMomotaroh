@@ -16,13 +16,13 @@ namespace SalesManagementApp
      */
     public partial class ItemList : Form
     {
-        private List<ItemDto> list = new List<ItemDto>();
+        private List<ItemDto> list;
         CategoryDto category;
 
         public ItemList()
         {
             InitializeComponent();
-
+            list = new List<ItemDto>();
             ItemDao dao = new ItemDao();
             list = dao.DisplayItem();
 

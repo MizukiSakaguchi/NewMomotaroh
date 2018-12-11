@@ -27,7 +27,7 @@ namespace SalesManagementApp
             string createId = null;
             try
             {
-                con.Open();
+                
 
                 SqlCommand com = new SqlCommand();
 

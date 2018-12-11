@@ -40,12 +40,14 @@ namespace SalesManagementApp
 
             //検索結果取得用のオブジェクトを用意
             SqlDataReader reader = null;
+            CreateID create = new CreateID();
+            string resultID = null;
             try
             {                
                 //実行するプロシージャの登録
-                command.CommandText = "SELECT ItemTable.ItemID, ItemTable.Name, ItemTable.CategoryID, " +
-                                        "CategoriesTable.CategoryName, ItemTable.Price FROM ItemTable " +
-                                        "INNER JOIN CategoriesTable ON ItemTable.CategoryID = CategoriesTable.CategoryID;";
+                command.CommandText = $"SELECT * FROM CategoriesTable " +
+                                        $"INNER JOIN ItemTable ON ItemTable.CategoryID = CategoriesTable.CategoryID " +
+                                        $"INNER JOIN StocTable ON ItemTable.ItemID = StockTable.ItemID ;";
                 command.CommandType = CommandType.Text;
 
                 //クエリの実行
@@ -54,10 +56,14 @@ namespace SalesManagementApp
                 //値の取得
                 while (reader.Read())
                 {
-                    CategoryDto category = new CategoryDto(reader["ItemTable.CategoryID"].ToString(), reader["CategoriesTable.CategoryName"].ToString());
+                    CategoryDto category = new CategoryDto(reader["CategoryID"].ToString(), reader["CategoryName"].ToString());
+                    
                     ItemDto dto = new ItemDto
-                        (reader["ItemID"].ToString(), reader["ItemTable.Name"].ToString(), category, Convert.ToInt32(reader["ItemTable.Price"]));
+                        (reader["ItemID"].ToString(), reader["Name"].ToString(), category, Convert.ToInt32(reader["Price"]));
                     list.Add(dto);
+                    resultID = create.CreateStrockID();
+                    DateTime date = DateTime.Parse(reader["Date"].ToString());
+                    StockDto stock = new StockDto(resultID, dto, Convert.ToInt32(reader["Number"]), date);
                 }
 
             }

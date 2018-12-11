@@ -81,21 +81,25 @@ namespace SalesManagementApp
             if (validator.SetOn(textBox1.Text) == false)
             {
                 label11.Text = $"在庫数を入力してください。";
+                return;
             }
 
             if (validator.IsNumeric(textBox1.Text) == false)
             {
                 label11.Text = $"数字を入力してください。";
+                return;
             }
 
             if (validator.IsPoint(Convert.ToInt32(textBox1.Text)) == false)
             {
                 label11.Text = $"整数を入力してください";
+                return;
             }
 
             if (validator.IsMinus(Convert.ToInt32(textBox1.Text)) == false)
             {
                 label11.Text = $"正の数を入力してください。";
+                return;
             }
             
             /*以下バリデーション*/

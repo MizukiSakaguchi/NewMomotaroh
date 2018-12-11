@@ -41,7 +41,7 @@ namespace SalesManagementApp
         public bool IsNumeric(string str)
         {
             int i = 0;
-            if (int.TryParse(str, out i))
+            if (!int.TryParse(str, out i))
             { 
                 return false;
             }

@@ -12,7 +12,7 @@ namespace SalesManagementApp
         List<CustomerDto> list = new List<CustomerDto>();
 
         //データベースから顧客の一覧のリストを取ってきて返却するメソッド.
-         public List<CustomerDto> DisplayCustomer()
+        public List<CustomerDto> DisplayCustomer()
         {
             //データベースの接続開始  
             SqlConnection con = new SqlConnection();
@@ -34,13 +34,13 @@ namespace SalesManagementApp
                 SqlDataReader reader;
                 reader = com.ExecuteReader();
 
-            while (reader.Read())
-               {
-                list.Add(new CustomerDto(reader["CustID"].ToString() , reader["Name"].ToString() ,
-                reader["TEL"].ToString()));
-                reader.Close();
+                while (reader.Read())
+                {
+                    list.Add(new CustomerDto(reader["CustID"].ToString(), reader["Name"].ToString(),
+                    reader["TEL"].ToString()));
+                    reader.Close();
                 }
-                
+
             }
             catch (SqlException e)
             {
@@ -58,7 +58,7 @@ namespace SalesManagementApp
                 }
             }
             return list;
-      
+
         }
     }
 }

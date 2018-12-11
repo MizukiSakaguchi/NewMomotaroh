@@ -18,6 +18,8 @@ namespace SalesManagementApp
      */
     public partial class AddStock : Form
     {
+        public ItemDto itemDto;
+
         public AddStock()
         {
             InitializeComponent();
@@ -25,6 +27,10 @@ namespace SalesManagementApp
 
         public AddStock(ItemDto item)
         {
+            InitializeComponent();
+
+            itemDto = item;
+
             DBHelper dBHelper = new DBHelper();
             SqlConnection connection = dBHelper.ConnectDB();
 
@@ -46,9 +52,9 @@ namespace SalesManagementApp
 
                 label13.Text = $"{upDate}";              
             }
-            catch
+            catch(SqlException e)
             {
-
+                Console.WriteLine(e.StackTrace);
             }
 
             label6.Text = $"{item.Id}";
@@ -61,6 +67,11 @@ namespace SalesManagementApp
         private void button1_Click(object sender, EventArgs e)
         {
             int stockNum = Convert.ToInt32(textBox1.Text);
+
+            StockDto dto = new StockDto(null, itemDto, stockNum, DateTime.Now);
+
+            StockDao dao = new StockDao();
+            dao.InsertStock(dto);
         }
 
         //キャンセル

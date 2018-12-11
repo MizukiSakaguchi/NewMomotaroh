@@ -48,7 +48,7 @@ namespace SalesManagementApp
         {
             string id = ListInItem[listBox1.SelectedIndex].Id;
             string name = ListInItem[listBox1.SelectedIndex].Name;
-            category = ListInItem[listBox1.SelectedIndex].Category;
+            CategoryDto category = ListInItem[listBox1.SelectedIndex].Category;
             int price = ListInItem[listBox1.SelectedIndex].Price;
 
             ItemDto dto = new ItemDto(id, name, category, price);

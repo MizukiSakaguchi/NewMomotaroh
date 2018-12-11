@@ -36,11 +36,11 @@ namespace SalesManagementApp
 
                 while (reader.Read())
                 {
-                    list.Add(new CustomerDto(reader["CustID"].ToString(), reader["Name"].ToString(),
+                    list.Add(new CustomerDto(reader["CustID"].ToString(), reader["CustName"].ToString(),
                     reader["TEL"].ToString()));
-                    reader.Close();
+                    
                 }
-
+                reader.Close();
             }
             catch (SqlException e)
             {

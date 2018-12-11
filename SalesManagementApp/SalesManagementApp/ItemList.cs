@@ -33,7 +33,13 @@ namespace SalesManagementApp
         //注文ボタン
         private void button3_Click(object sender, EventArgs e)
         {
-            AddOrder order = new AddOrder();
+            string id = ListInItem[listBox1.SelectedIndex].Id.ToString();
+            string name = ListInItem[listBox1.SelectedIndex].Name.ToString();
+            CategoryDto category = ListInItem[listBox1.SelectedIndex].Category;
+            int price = ListInItem[listBox1.SelectedIndex].Price;
+
+            ItemDto = new ItemDto(id, name, category, price);
+            AddOrder order = new AddOrder(this);
             order.Show();
         }
 

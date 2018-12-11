@@ -16,17 +16,17 @@ namespace SalesManagementApp
      */
     public partial class ItemList : Form
     {
-        private List<ItemDto> list;
+        List<ItemDto> ListInItem {get; set;}
         CategoryDto category;
 
         public ItemList()
         {
             InitializeComponent();
-            list = new List<ItemDto>();
+            ListInItem = new List<ItemDto>();
             ItemDao dao = new ItemDao();
-            list = dao.DisplayItem();
+            ListInItem = dao.DisplayItem();
 
-            list.ForEach(v => listBox1.Items.Add($"{v.Id}：{v.Name}"));
+            ListInItem.ForEach(v => listBox1.Items.Add($"{v.Id}：{v.Name}"));
         }
                 
         //注文ボタン
@@ -46,10 +46,10 @@ namespace SalesManagementApp
         //在庫数追加
         private void button1_Click(object sender, EventArgs e)
         {
-            string id = list[listBox1.SelectedIndex].Id;
-            string name = list[listBox1.SelectedIndex].Name;
-            category = list[listBox1.SelectedIndex].Category;
-            int price = list[listBox1.SelectedIndex].Price;
+            string id = ListInItem[listBox1.SelectedIndex].Id;
+            string name = ListInItem[listBox1.SelectedIndex].Name;
+            category = ListInItem[listBox1.SelectedIndex].Category;
+            int price = ListInItem[listBox1.SelectedIndex].Price;
 
             ItemDto dto = new ItemDto(id, name, category, price);
 
@@ -63,15 +63,15 @@ namespace SalesManagementApp
          */
         private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            label1.Text = $"{list[listBox1.SelectedIndex].Id}";
+            label1.Text = $"{ListInItem[listBox1.SelectedIndex].Id}";
             label1.Visible = true;
-            label2.Text = $"{list[listBox1.SelectedIndex].Name}";
+            label2.Text = $"{ListInItem[listBox1.SelectedIndex].Name}";
             label2.Visible = true;
-            label3.Text = $"{list[listBox1.SelectedIndex].Category.Name}";
+            label3.Text = $"{ListInItem[listBox1.SelectedIndex].Category.Name}";
             label3.Visible = true;
-            label4.Text = $"{list[listBox1.SelectedIndex].Price}";
+            label4.Text = $"{ListInItem[listBox1.SelectedIndex].Price}";
             label4.Visible = true;
-            label11.Text = $"{list[listBox1.SelectedIndex].Stock.Num}";
+            label11.Text = $"{ListInItem[listBox1.SelectedIndex].Stock.Num}";
             label11.Visible = true;                        
         }
 

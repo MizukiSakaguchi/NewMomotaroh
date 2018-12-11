@@ -21,6 +21,11 @@ namespace SalesManagementApp
             List<ItemDto> list = new List<ItemDto>();
             SqlCommand command = new SqlCommand();
 
+
+            //検索結果取得用のオブジェクトを用意
+            SqlDataReader reader;
+            //クエリの実行
+            reader = command.ExecuteReader();
             try
             {
                 
@@ -30,17 +35,12 @@ namespace SalesManagementApp
                 //Connection情報の登録
                 command.Connection = connection;
 
-                //検索結果取得用のオブジェクトを用意
-                SqlDataReader reader;
-                //クエリの実行
-                reader = command.ExecuteReader();
 
                 //値の取得
                 while (reader.Read())
                 {
                     ItemDto dto = new ItemDto
-                        (reader["ItemID"].ToString(), reader["Name"].ToString(), reader["CategoryID"].ToString(), Convert.ToInt32(reader["Price"]));
-
+                        (reader["ItemID"].ToString(), reader["Name"].ToString(), (CategoryDto)reader["CategoryID"], Convert.ToInt32(reader["Price"]));
                 }
 
             }
@@ -52,7 +52,6 @@ namespace SalesManagementApp
             {
                 //close処理
                 reader.Close();
-                command.Close();
                 connection.Close();
             }
 
@@ -64,7 +63,7 @@ namespace SalesManagementApp
         {
             //DB接続
             DBHelper connectDB = new DBHelper();
-            SqlConnection connection = connectDB.connectDB();
+            SqlConnection connection = connectDB.ConnectDB();
 
             SqlCommand command = new SqlCommand();
 
@@ -101,7 +100,6 @@ namespace SalesManagementApp
             }
             finally
             {
-                command.Close();
                 connection.Close();
             }
             return item;

@@ -31,7 +31,7 @@ namespace SalesManagementApp
             SqlCommand command = new SqlCommand();
 
             command.CommandText = $"SELECT * FROM StockTable " +
-                                    $"WHERE ItemID = '{item.Id}' ORDER BY DESC";
+                                    $"WHERE ItemID = '{item.Id}' ORDER BY Date DESC";
 
             command.Connection = connection;
 
@@ -60,13 +60,13 @@ namespace SalesManagementApp
         //追加
         private void button1_Click(object sender, EventArgs e)
         {
-
+            int stockNum = Convert.ToInt32(textBox1.Text);
         }
 
         //キャンセル
         private void button2_Click(object sender, EventArgs e)
         {
-            
+            this.Close();
         }
     }
 }

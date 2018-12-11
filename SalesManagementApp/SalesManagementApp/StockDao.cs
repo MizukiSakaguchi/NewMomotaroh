@@ -10,7 +10,7 @@ namespace SalesManagementApp
 {
     class StockDao
     {
-        public bool StockDto(StockDto stock)
+        public bool InsertStock(StockDto stock)
         {
             CreateID create = new CreateID();
             string createId = null;

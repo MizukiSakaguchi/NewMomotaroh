@@ -18,6 +18,8 @@ namespace SalesManagementApp
      */
     public partial class AddStock : Form
     {
+        public ItemDto itemDto;
+
         public AddStock()
         {
             InitializeComponent();
@@ -25,6 +27,10 @@ namespace SalesManagementApp
 
         public AddStock(ItemDto item)
         {
+            InitializeComponent();
+
+            itemDto = item;
+
             DBHelper dBHelper = new DBHelper();
             SqlConnection connection = dBHelper.ConnectDB();
 
@@ -44,23 +50,33 @@ namespace SalesManagementApp
                 DateTime lastUpDate = DateTime.Parse(reader["Date"].ToString());
                 string upDate = lastUpDate.ToLongDateString();
 
-                label13.Text = $"{upDate}";              
+                label13.Text = $"{upDate}";
+                label13.Visible = true;
             }
-            catch
+            catch(SqlException e)
             {
-
+                Console.WriteLine(e.StackTrace);
             }
 
             label6.Text = $"{item.Id}";
+            label6.Visible = true;
             label7.Text = $"{item.Name}";
+            label7.Visible = true;
             label8.Text = $"{item.Category.Name}";
+            label8.Visible = true;
             label9.Text = $"{item.Price}";
+            label9.Visible = true;
         }
 
         //追加
         private void button1_Click(object sender, EventArgs e)
         {
             int stockNum = Convert.ToInt32(textBox1.Text);
+
+            StockDto dto = new StockDto(null, itemDto, stockNum, DateTime.Now);
+
+            StockDao dao = new StockDao();
+            dao.InsertStock(dto);
         }
 
         //キャンセル

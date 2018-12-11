@@ -28,14 +28,14 @@ namespace SalesManagementApp
             list.ForEach(v => listBox1.Items.Add($"{v.Id}：{v.Name}"));
         }
                 
-        //注文
+        //注文ボタン
         private void button3_Click(object sender, EventArgs e)
         {
             AddOrder order = new AddOrder();
             order.Show();
         }
 
-        //変更
+        //変更ボタン
         private void button4_Click(object sender, EventArgs e)
         {
             ChangeItem item = new ChangeItem();

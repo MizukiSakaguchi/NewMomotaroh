@@ -10,13 +10,9 @@ namespace SalesManagementApp
 {
     class CreateID
     {
-        public string CreateSaleID()
+        public string CreateSaleID(SqlConnection connection)
         {
             string result = null;
-
-            //DB接続
-            DBHelper connectDB = new DBHelper();
-            SqlConnection connection = connectDB.ConnectDB();
             
             SqlCommand command = new SqlCommand();
 
@@ -67,20 +63,30 @@ namespace SalesManagementApp
         public string CreateStrockID()
         {
             string result = null;
-
             //DB接続
-            DBHelper connectDB = new DBHelper();
-            SqlConnection connection = connectDB.ConnectDB();
-
-            SqlCommand command = new SqlCommand();
-
-            command.Connection = connection;
-
-            //検索結果取得用のオブジェクトを用意
-            SqlDataReader reader = null;
+            SqlConnection connection = new SqlConnection();
+            
             try
             {
+                connection.ConnectionString
+                    = System.Configuration
+                    .ConfigurationManager
+                    .ConnectionStrings["SalesManagementApp.Properties.Settings.connectDB"]
+                    .ConnectionString;
+                //DB接続
+                connection.Open();
+            }
+            catch (SqlException e)
+            {
+                Console.WriteLine(e);
+            }
+            SqlCommand command = new SqlCommand();
 
+            //検索結果取得用のオブジェクトを用意
+            SqlDataReader sqlReader = null;
+            try
+            {
+                
                 //実行するプロシージャの登録
                 command.CommandText = "SELECT * FROM StockTable ORDER BY DESC;";
                 command.CommandType = CommandType.Text;
@@ -88,13 +94,13 @@ namespace SalesManagementApp
                 command.Connection = connection;
 
                 //sqlの実行
-                reader = command.ExecuteReader();
+                sqlReader = command.ExecuteReader();
 
                 //値の取得
-                if (reader.Read())
+                if (sqlReader.Read())
                 {
                     //IDの一番値が大きいものを取得
-                    result = reader["StockID"].ToString();
+                    result = sqlReader["StockID"].ToString();
                 }
                 //数字部分だけ抜き取り
                 result = result.Substring(1, 4);
@@ -112,7 +118,7 @@ namespace SalesManagementApp
             finally
             {
                 //close処理
-                reader.Close();
+                sqlReader.Close();
                 connection.Close();
             }
             return result;

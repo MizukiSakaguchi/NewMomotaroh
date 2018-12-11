@@ -12,8 +12,12 @@ namespace SalesManagementApp
     {
         public bool StockDto(StockDto stock)
         {
+            CreateID create = new CreateID();
+            string createId = null;
+            createId = create.CreateStrockID();
             //DB接続
             SqlConnection connection = new SqlConnection();
+
             try
             {
                 connection.ConnectionString
@@ -30,8 +34,7 @@ namespace SalesManagementApp
             }
 
             SqlCommand command = new SqlCommand();
-            CreateID create = new CreateID();
-            string createId = null;
+            
 
             try
             {
@@ -41,7 +44,7 @@ namespace SalesManagementApp
                 command.CommandType = CommandType.Text;
 
                 command.Parameters.Add("@id", SqlDbType.NVarChar, 5);
-                createId = create.CreateStrockID();
+                
                 command.Parameters["@id"].Value = createId;
 
                 command.Parameters.Add("@itemId", SqlDbType.NVarChar, 5);

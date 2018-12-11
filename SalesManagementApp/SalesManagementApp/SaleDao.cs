@@ -34,7 +34,7 @@ namespace SalesManagementApp
                                     $"VALUES(@id, @customerId, @num, @itemId)";
 
                 com.Parameters.Add("@id", SqlDbType.NVarChar, 5);
-                createId = create.CreateSaleID();
+                createId = create.CreateSaleID(con);
                 com.Parameters["@id"].Value = createId;
                 com.Parameters.Add("@customerId", SqlDbType.NVarChar, 4);
                 com.Parameters["@customerId"].Value = sale.Customer.Id;

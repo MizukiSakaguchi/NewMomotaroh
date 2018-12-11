@@ -14,6 +14,11 @@ namespace SalesManagementApp
         //商品を一覧するDao
         public List<ItemDto> DisplayItem()
         {
+
+            CreateID create = new CreateID();
+            string resultID = null;
+            resultID = create.CreateStrockID();
+
             //DB接続
             SqlConnection connection = new SqlConnection();
             try
@@ -40,16 +45,16 @@ namespace SalesManagementApp
 
             //検索結果取得用のオブジェクトを用意
             SqlDataReader reader = null;
-            CreateID create = new CreateID();
-            string resultID = null;
+            
             try
-            {                
+            {
+                
                 //実行するプロシージャの登録
                 command.CommandText = $"SELECT * FROM CategoriesTable " +
                                         $"INNER JOIN ItemTable ON ItemTable.CategoryID = CategoriesTable.CategoryID " +
-                                        $"INNER JOIN StocTable ON ItemTable.ItemID = StockTable.ItemID ;";
+                                        $"INNER JOIN StockTable ON ItemTable.ItemID = StockTable.ItemID ;";
                 command.CommandType = CommandType.Text;
-
+                
                 //クエリの実行
                 reader = command.ExecuteReader();
 
@@ -61,7 +66,7 @@ namespace SalesManagementApp
                     ItemDto dto = new ItemDto
                         (reader["ItemID"].ToString(), reader["Name"].ToString(), category, Convert.ToInt32(reader["Price"]));
                     list.Add(dto);
-                    resultID = create.CreateStrockID();
+                    
                     DateTime date = DateTime.Parse(reader["Date"].ToString());
                     StockDto stock = new StockDto(resultID, dto, Convert.ToInt32(reader["Number"]), date);
                 }

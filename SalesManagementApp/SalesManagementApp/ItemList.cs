@@ -17,6 +17,7 @@ namespace SalesManagementApp
     public partial class ItemList : Form
     {
         private List<ItemDto> list = new List<ItemDto>();
+        CategoryDto category;
 
         public ItemList()
         {
@@ -47,7 +48,7 @@ namespace SalesManagementApp
         {
             string id = list[listBox1.SelectedIndex].Id;
             string name = list[listBox1.SelectedIndex].Name;
-            CategoryDto category = list[listBox1.SelectedIndex].Category;
+            category = list[listBox1.SelectedIndex].Category;
             int price = list[listBox1.SelectedIndex].Price;
 
             ItemDto dto = new ItemDto(id, name, category, price);
@@ -77,6 +78,15 @@ namespace SalesManagementApp
         private void ItemList_Load(object sender, EventArgs e)
         {
            
+        }
+
+        //カテゴリーの情報を返却するメソッド.
+        public CategoryDto sendData
+        {
+            get
+            {
+                return category;
+            }
         }
     }
 }

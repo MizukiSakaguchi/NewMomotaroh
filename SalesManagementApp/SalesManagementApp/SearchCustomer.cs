@@ -23,7 +23,11 @@ namespace SalesManagementApp
 
         }
         CustomerDao customerDao = new CustomerDao();
+
+        CustomerDto customerDto;
+        string id = null;
         string name = null;
+        string tel = null;
 
         //ロードした時の表示
         private void SearchCustomer_Load(object sender, EventArgs e)
@@ -42,7 +46,11 @@ namespace SalesManagementApp
         {
             
             AddOrder addOrder = new AddOrder();
+            id = CustomerList[listBox1.SelectedIndex].Id;
             name = CustomerList[listBox1.SelectedIndex].Name;
+            tel = CustomerList[listBox1.SelectedIndex].Tel;
+           customerDto = new CustomerDto(id, name, tel);
+
             addOrder.Show();
 
         }
@@ -65,12 +73,12 @@ namespace SalesManagementApp
             label3.Visible = true;
         }
 
-        //顧客の名前を返却するメソッド.
-        public string sendData
+        //顧客の情報を返却するメソッド.
+        public CustomerDto sendData
         {
-            get
+        get
             {
-                return name;
+                return customerDto;
             }
         }
 

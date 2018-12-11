@@ -46,9 +46,9 @@ namespace SalesManagementApp
         //変更ボタン
         private void button4_Click(object sender, EventArgs e)
         {
-            ItemActiva
-            ChangeItem item = new ChangeItem(this);
-            item.Show();
+            ItemDto item = ListInItem[listBox1.SelectedIndex];
+            ChangeItem change = new ChangeItem(item);
+            change.Show();
         }
 
         //在庫数追加
@@ -88,14 +88,14 @@ namespace SalesManagementApp
            
         }
 
-        //カテゴリーの情報を返却するメソッド.
-        public CategoryDto sendData
-        {
-            get
-            {
-                return category;
-            }
-        }
+        ////カテゴリーの情報を返却するメソッド.
+        //public CategoryDto sendData
+        //{
+        //    get
+        //    {
+        //        return category;
+        //    }
+        //}
 
       
     }

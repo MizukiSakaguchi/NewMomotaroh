@@ -17,29 +17,29 @@ namespace SalesManagementApp
      */
     public partial class ChangeItem : Form
     {
-        ItemList f1;
+        ItemDto item = null;
 
-        public ChangeItem(ItemList f1)
+        public ChangeItem(ItemDto itemDto)
         {
-            this.f1 = f1;
+            this.item = itemDto;
             InitializeComponent();
         }
 
         //変更
         private void button1_Click(object sender, EventArgs e)
         {
-            string id = label5.Text;
-            string name = textBox1.Text;
-            int price = Convert.ToInt32(textBox2.Text);
-            string strCategory = comboBox1.SelectedText;
-
-            
-            
-            
-
-
             ItemDao itemDao = new ItemDao();
-            
+            ItemDto changeItem = itemDao.UpdateItem(item);
+            if(changeItem != null)
+            {
+                MessageBox.Show("更新に成功しました");
+                this.Close();
+            }
+            else
+            {
+                label7.Text = "更新に失敗しました";
+                label7.Visible = true;
+            }
         }
 
         //キャンセル

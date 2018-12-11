@@ -68,9 +68,38 @@ namespace SalesManagementApp
             label9.Visible = true;
         }
 
-        //追加
+        /**
+         * 追加ボタンを押下したときにDBに在庫が追加されるメソッド
+         */
         private void button1_Click(object sender, EventArgs e)
         {
+            //入力チェック用インスタンスの生成
+            Validator validator = new Validator();
+            
+            /*以下バリデーションチェック*/
+
+            if (validator.SetOn(textBox1.Text) == false)
+            {
+                label11.Text = $"在庫数を入力してください。";
+            }
+
+            if (validator.IsNumeric(textBox1.Text) == false)
+            {
+                label11.Text = $"数字を入力してください。";
+            }
+
+            if (validator.IsPoint(Convert.ToInt32(textBox1.Text)) == false)
+            {
+                label11.Text = $"整数を入力してください";
+            }
+
+            if (validator.IsMinus(Convert.ToInt32(textBox1.Text)) == false)
+            {
+                label11.Text = $"正の数を入力してください。";
+            }
+            
+            /*以下バリデーション*/
+
             int stockNum = Convert.ToInt32(textBox1.Text);
 
             StockDto dto = new StockDto(null, itemDto, stockNum, DateTime.Now);

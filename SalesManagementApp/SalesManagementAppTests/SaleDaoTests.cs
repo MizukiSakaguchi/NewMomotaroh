@@ -67,7 +67,16 @@ namespace SalesManagementApp.Tests
         [TestMethod()]
         public void InsertSaleTest4()
         {
-            Assert.Fail();
+            CreateID create = new CreateID();
+            string saleId = create.CreateSaleID();
+            string custId = null;
+            CustomerDto custDto = new CustomerDto(custId, "RMK", "080-***");
+            CategoryDto category = new CategoryDto("c0002", "猫用");
+            ItemDto itemDto = null;
+            SaleDto dto = new SaleDto(saleId, custDto, 3, itemDto);
+            SaleDao dao = new SaleDao();
+
+            Assert.IsFalse(dao.InsertSale(dto));
         }
 
         [TestMethod()]

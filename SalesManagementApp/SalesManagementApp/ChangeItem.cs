@@ -32,6 +32,13 @@ namespace SalesManagementApp
             string name = textBox1.Text;
             int price = Convert.ToInt32(textBox2.Text);
 
+            //validateする(途中)
+            Validator validator = new Validator();
+            if (validator.SetOn(id)  )
+            {
+
+            }
+
             string selectCategory = comboBox1.SelectedItem.ToString();
             string[] categoryNameList = selectCategory.Split(':');
             string categoryId = categoryNameList[0];

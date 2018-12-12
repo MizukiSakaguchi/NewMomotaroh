@@ -14,7 +14,11 @@ namespace SalesManagementApp.Tests
         [TestMethod()]
         public void DisplayCustomerTest()
         {
-            Assert.Fail();
+            List<CustomerDto> customerDto = new List<CustomerDto>();
+            CustomerDao customerDao = new CustomerDao();
+            customerDto = customerDao.DisplayCustomer();
+            Assert.AreEqual(3, customerDto.Count);
+
         }
     }
 }

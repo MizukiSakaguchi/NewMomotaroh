@@ -17,9 +17,9 @@ namespace SalesManagementApp
             //データベースの接続開始  
             SqlConnection con = new SqlConnection();
 
-            con.ConnectionString = System.Configuration.ConfigurationManager.ConnectionStrings
-                ["SalesManagementApp.Properties.Settings.connectDB"].ConnectionString;
-
+            //con.ConnectionString = System.Configuration.ConfigurationManager.ConnectionStrings
+            //    ["SalesManagementApp.Properties.Settings.connectDB"].ConnectionString;
+            con.ConnectionString = @"Data Source=192.168.100.108\SQLEXPRESS;Initial Catalog=Momotaroh;Integrated Security=True";
             try
             {
                 con.Open();

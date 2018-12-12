@@ -63,12 +63,12 @@ namespace SalesManagementApp
         //顧客リスト内の顧客をクリックしたとき
         private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            label1.Text = $"{CustomerList[listBox1.SelectedIndex].Id}";
-            label1.Visible = true;
-            label2.Text = $"{CustomerList[listBox1.SelectedIndex].Name}";
-            label2.Visible = true;
-            label3.Text = $"{CustomerList[listBox1.SelectedIndex].Tel}";
-            label3.Visible = true;
+            label4.Text = $"{CustomerList[listBox1.SelectedIndex].Id}";
+            label4.Visible = true;
+            label5.Text = $"{CustomerList[listBox1.SelectedIndex].Name}";
+            label5.Visible = true;
+            label6.Text = $"{CustomerList[listBox1.SelectedIndex].Tel}";
+            label6.Visible = true;
         }
 
         //顧客の情報を返却するメソッド.
@@ -80,6 +80,14 @@ namespace SalesManagementApp
             }
         }
 
-    
+        private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label4_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

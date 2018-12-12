@@ -66,6 +66,7 @@
             this.label2.Size = new System.Drawing.Size(47, 12);
             this.label2.TabIndex = 2;
             this.label2.Text = "顧客名：";
+            this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // label3
             // 
@@ -85,6 +86,7 @@
             this.label4.TabIndex = 4;
             this.label4.Text = "label4";
             this.label4.Visible = false;
+            this.label4.Click += new System.EventHandler(this.label4_Click);
             // 
             // label5
             // 

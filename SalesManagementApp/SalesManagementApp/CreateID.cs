@@ -79,7 +79,6 @@ namespace SalesManagementApp
         public string CreateStrockID()
         {
             string result = null;
-
             
             //DB接続
             SqlConnection connection = new SqlConnection();

@@ -27,7 +27,7 @@ namespace SalesManagementApp
             con.ConnectionString = System.Configuration.ConfigurationManager.ConnectionStrings
                ["SalesManagementApp.Properties.Settings.connectDB"].ConnectionString;
             //con.ConnectionString =
-              //          "Data Source = 192.168.100.108\SQLEXPRESS; Initial Catalog = Momotaroh; Integrated Security = True";"
+              //         "Data Source = 192.168.100.108\SQLEXPRESS; Initial Catalog = Momotaroh; Integrated Security = True";
             
             try
             {

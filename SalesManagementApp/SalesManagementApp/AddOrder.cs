@@ -64,7 +64,8 @@ namespace SalesManagementApp
             {
                 label12.Text = "登録できませんでした";
                 label12.Visible = true;
-            } 
+            }
+
         }
 
         //キャンセル

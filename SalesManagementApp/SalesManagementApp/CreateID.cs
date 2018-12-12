@@ -60,7 +60,7 @@ namespace SalesManagementApp
                 int idNum = Convert.ToInt32(result);
                 idNum++;
                 //0埋め
-                result =  idNum.ToString().PadLeft(5, '0');
+                result = idNum.ToString().PadLeft(5, '0');
                 
             }
             catch (SqlException e)

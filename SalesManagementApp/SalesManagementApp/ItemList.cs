@@ -33,10 +33,10 @@ namespace SalesManagementApp
                 int j = i + 1;
                 if((ListInItem[i].Id.Equals(ListInItem[j].Id)) && (ListInItem[i].Stock.LastUpDate <= ListInItem[j].Stock.LastUpDate))
                 {
-                    //ListInItem[i] = null;
+                    ListInItem[i] = null;
                 }
             }
-            //ListInItem.ForEach
+            ListInItem.RemoveAll(i => i== null);
             ListInItem.ForEach(v => listBox1.Items.Add($"{v.Id}：{v.Name}"));
         }
                 

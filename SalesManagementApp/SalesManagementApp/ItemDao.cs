@@ -46,18 +46,19 @@ namespace SalesManagementApp
             //検索結果取得用のオブジェクトを用意
             SqlDataReader reader = null;
             
-            //try
-           // {
+            try
+            {
                 
                 //実行するプロシージャの登録
                 command.CommandText = $"SELECT * FROM ItemTable " +
                                         $" INNER JOIN CategoriesTable " +
                                         $" ON ItemTable.CategoryID = CategoriesTable.CategoryID " +
                                         $" INNER JOIN (SELECT MAX(Date) AS maxDate,ItemID" +
-                                            $" FROM StockTable group by ItemID) AS Stocks " +
+                                            $" FROM StockTable group by StockTable.ItemID) AS Stocks " +
                                             $" ON ItemTable.ItemID = Stocks.ItemID" +
                                             $" INNER JOIN  (SELECT Number, ItemID FROM StockTable) AS NumberTable " +
-                                            $" ON ItemTable.ItemID = NumberTable.ItemID";
+                                            $" ON ItemTable.ItemID = NumberTable.ItemID " +
+                                            $" ";
                 command.CommandType = CommandType.Text;
                 
                 //クエリの実行
@@ -70,25 +71,24 @@ namespace SalesManagementApp
                     
                     ItemDto dto = new ItemDto
                         (reader["ItemID"].ToString(), reader["Name"].ToString(), category, Convert.ToInt32(reader["Price"]));
-                    
-                    
+
                     DateTime date = DateTime.Parse(reader["maxDate"].ToString());
                     StockDto stock = new StockDto(resultID, dto, Convert.ToInt32(reader["Number"]), date);
                     dto.Stock = stock;
                     list.Add(dto);
                 }
 
-           // }
-            //catch (SqlException e)
-           // {
-             //   Console.WriteLine(e);
-           // }
-            //finally
-           // {
+            }
+            catch (SqlException e)
+            {
+                Console.WriteLine(e);
+            }
+            finally
+            {
                 //close処理
                 reader.Close();
                 connection.Close();
-            //}
+            }
 
             return list;
         }
@@ -121,6 +121,9 @@ namespace SalesManagementApp
                     $"SET Name = @name, Price = @price, CategoryID = @categoryId " +
                     $"WHERE ItemID = @item_id; ";
                 command.CommandType = CommandType.Text;
+
+                command.Parameters.Add("@item_id", SqlDbType.NVarChar, 20);
+                command.Parameters["@item_id"].Value = item.Id;
 
                 command.Parameters.Add("@name", SqlDbType.NVarChar, 20);
                 command.Parameters["@name"].Value = item.Name;

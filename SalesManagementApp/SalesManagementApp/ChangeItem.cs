@@ -17,11 +17,11 @@ namespace SalesManagementApp
      */
     public partial class ChangeItem : Form
     {
-        ItemDto item = null;
+        public ItemDto Item {get;set;} 
 
         public ChangeItem(ItemDto itemDto)
         {
-            this.item = itemDto;
+            this.Item = itemDto;
             InitializeComponent();
         }
 
@@ -49,6 +49,7 @@ namespace SalesManagementApp
 
             ItemDao itemDao = new ItemDao();
             ItemDto changeItem = itemDao.UpdateItem(item);
+            
             if(changeItem != null)
             {
                 MessageBox.Show("更新に成功しました");
@@ -69,10 +70,10 @@ namespace SalesManagementApp
 
         private void ChangeItem_Load(object sender, EventArgs e)
         {
-            label5.Text = item.Id;
+            label5.Text = Item.Id;
             label5.Visible = true;
-            textBox1.Text = item.Name;
-            textBox2.Text = item.Price.ToString();
+            textBox1.Text = Item.Name;
+            textBox2.Text = Item.Price.ToString();
 
         }
     }

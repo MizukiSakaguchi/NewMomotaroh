@@ -59,12 +59,17 @@ namespace SalesManagementApp
 
             //注文処理の実行
             bool frag = saleDao.InsertSale(saleDto);
-
-            if (frag == false)
+            if (frag)
+            {
+                MessageBox.Show("登録に成功しました");
+                this.Close();
+            }
+            else
             {
                 label12.Text = "登録できませんでした";
                 label12.Visible = true;
             }
+            
 
         }
 

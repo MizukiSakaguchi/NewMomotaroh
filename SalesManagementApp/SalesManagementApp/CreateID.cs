@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace SalesManagementApp
 {
-    class CreateID
+    public class CreateID
     {
         public string CreateSaleID()
         {

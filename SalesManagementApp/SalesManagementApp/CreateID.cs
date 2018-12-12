@@ -40,7 +40,7 @@ namespace SalesManagementApp
             {
 
                 //実行するプロシージャの登録
-                command.CommandText = "SELECT * FROM SalesTable ORDER BY DESC;";
+                command.CommandText = "SELECT * FROM SalesTable ORDER BY SalesID DESC";
                 command.CommandType = CommandType.Text;
                 //Connection情報の登録
                 command.Connection = connection;
@@ -55,7 +55,7 @@ namespace SalesManagementApp
                     result = reader["SalesID"].ToString();
                 }
                 //数字部分だけ抜き取り
-                result = result.Substring(0, 4);
+                result = result.Substring(1, 4);
                 //数字に変換
                 int idNum = Convert.ToInt32(result);
                 idNum++;

@@ -31,6 +31,7 @@ namespace SalesManagementApp
             
             try
             {
+                con.Open();
                 SqlCommand com = new SqlCommand();
 
                 com.CommandText = $"INSERT INTO SalesTable (SalesID, CustID, Number, ItemID) " +

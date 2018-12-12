@@ -56,8 +56,10 @@
     <Otherwise />
   </Choose>
   <ItemGroup>
+    <Compile Include="ItemDaoTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SaleDaoTests.cs" />
+    <Compile Include="StockDaoTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

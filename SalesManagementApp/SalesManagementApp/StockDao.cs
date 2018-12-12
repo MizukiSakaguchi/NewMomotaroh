@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace SalesManagementApp
 {
-    class StockDao
+    public class StockDao
     {
         public bool InsertStock(StockDto stock)
         {

@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace SalesManagementApp
 {
-    class ItemDao
+    public class ItemDao
     {
 
         //商品を一覧するDao

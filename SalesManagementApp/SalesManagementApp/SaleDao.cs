@@ -17,25 +17,26 @@ namespace SalesManagementApp
          */
         public bool InsertSale(SaleDto sale)
         {
+            //ID生成
+            CreateID create = new CreateID();
+            string createId = null;
+            createId = create.CreateSaleID();
+
             SqlConnection con = new SqlConnection();
 
             con.ConnectionString = System.Configuration.ConfigurationManager.ConnectionStrings
                ["SalesManagementApp.Properties.Settings.connectDB"].ConnectionString;
             //con.ConnectionString =
               //          "Data Source = 192.168.100.108\SQLEXPRESS; Initial Catalog = Momotaroh; Integrated Security = True";"
-            CreateID create = new CreateID();
-            string createId = null;
+            
             try
             {
-                
-
                 SqlCommand com = new SqlCommand();
 
                 com.CommandText = $"INSERT INTO SalesTable (SalesID, CustID, Number, ItemID) " +
                                     $"VALUES(@id, @customerId, @num, @itemId)";
 
                 com.Parameters.Add("@id", SqlDbType.NVarChar, 5);
-                createId = create.CreateSaleID(con);
                 com.Parameters["@id"].Value = createId;
                 com.Parameters.Add("@customerId", SqlDbType.NVarChar, 4);
                 com.Parameters["@customerId"].Value = sale.Customer.Id;

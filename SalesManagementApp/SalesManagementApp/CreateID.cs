@@ -10,10 +10,27 @@ namespace SalesManagementApp
 {
     class CreateID
     {
-        public string CreateSaleID(SqlConnection connection)
+        public string CreateSaleID()
         {
             string result = null;
-            
+            //DB接続
+            SqlConnection connection = new SqlConnection();
+
+            try
+            {
+                connection.ConnectionString
+                    = System.Configuration
+                    .ConfigurationManager
+                    .ConnectionStrings["SalesManagementApp.Properties.Settings.connectDB"]
+                    .ConnectionString;
+                //DB接続
+                connection.Open();
+            }
+            catch (SqlException e)
+            {
+                Console.WriteLine(e);
+            }
+
             SqlCommand command = new SqlCommand();
 
             command.Connection = connection;

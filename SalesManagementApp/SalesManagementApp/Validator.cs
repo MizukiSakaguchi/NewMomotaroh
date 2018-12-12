@@ -6,7 +6,10 @@ using System.Threading.Tasks;
 
 namespace SalesManagementApp
 {
-    class Validator
+    /**
+     * テキストボックスのバリデーションチェックを行うクラス.
+     */
+    public class Validator
     {
         public int Num { get; set; }
         public string Word { get; set; }

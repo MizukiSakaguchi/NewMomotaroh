@@ -17,7 +17,7 @@ namespace SalesManagementApp.Tests
             List<CustomerDto> customerDto = new List<CustomerDto>();
             CustomerDao customerDao = new CustomerDao();
             customerDto = customerDao.DisplayCustomer();
-            Assert.AreEqual(3, customerDto.Count);
+            Assert.AreEqual(7, customerDto.Count);
 
         }
     }

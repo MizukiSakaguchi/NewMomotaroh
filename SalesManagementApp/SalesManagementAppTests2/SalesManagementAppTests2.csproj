@@ -53,6 +53,7 @@
   <ItemGroup>
     <Compile Include="CustomerDaoTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SaleDaoTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\SalesManagementApp\SalesManagementApp.csproj">

@@ -9,16 +9,10 @@ using System.Threading.Tasks;
 namespace SalesManagementApp.Tests
 {
     [TestClass()]
-    public class ItemDaoTests
+    public class CustomerDaoTests
     {
         [TestMethod()]
-        public void DisplayItemTest()
-        {
-            Assert.Fail();
-        }
-
-        [TestMethod()]
-        public void UpdateItemTest()
+        public void DisplayCustomerTest()
         {
             Assert.Fail();
         }

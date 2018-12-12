@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace SalesManagementApp
 {
-    class CustomerDao
+    public class CustomerDao
     {
         List<CustomerDto> list = new List<CustomerDto>();
 

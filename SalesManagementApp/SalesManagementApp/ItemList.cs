@@ -48,7 +48,7 @@ namespace SalesManagementApp
         {
             ItemDto item = ListInItem[listBox1.SelectedIndex];
             ChangeItem change = new ChangeItem(item);
-            change.Show();
+            change.ShowDialog();
         }
 
         //在庫数追加

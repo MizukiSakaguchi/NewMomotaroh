@@ -2,6 +2,7 @@
 using SalesManagementApp;
 using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -36,7 +37,7 @@ namespace SalesManagementApp.Tests
             ItemDto itemDto = null;
             DateTime update = new DateTime(2018, 12, 14, 15, 00, 00);
             StockDto dto = new StockDto(stockId, itemDto, 3, update);
-            StockDao dao = new StockDao();            
+            StockDao dao = new StockDao();
 
             Assert.IsFalse(dao.InsertStock(dto));
         }
@@ -64,6 +65,24 @@ namespace SalesManagementApp.Tests
             StockDao dao = new StockDao();
 
             Assert.IsTrue(dao.InsertStock(null));
+        }
+
+        [TestMethod()]
+        [ExpectedException(typeof(SqlException))]
+        public void InsertStockTest5()
+        {
+            CreateID create = new CreateID();
+            string stockId = create.CreateStrockID();
+            string id = "i0002";
+            string name = "ちゃおちゅーる";
+            int price = 300;
+            CategoryDto category = new CategoryDto("c0002", "猫用");
+            ItemDto itemDto = new ItemDto(id, name, category, price);
+            DateTime update = new DateTime(2018, 12, 13, 15, 00, 00);
+            StockDto dto = new StockDto(stockId, itemDto, 3, update);
+            StockDao dao = new StockDao();
+
+            dao.InsertStock(dto);
         }
     }
 }

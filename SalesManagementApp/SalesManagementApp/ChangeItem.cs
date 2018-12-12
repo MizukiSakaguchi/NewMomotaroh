@@ -46,13 +46,14 @@ namespace SalesManagementApp
             CategoryDto category = new CategoryDto(categoryId,categoryName);
 
             ItemDto item = new ItemDto(id, name, category, price);
-
+            
             ItemDao itemDao = new ItemDao();
             ItemDto changeItem = itemDao.UpdateItem(item);
             
             if(changeItem != null)
             {
                 MessageBox.Show("更新に成功しました");
+                Item = changeItem;
                 this.Close();
             }
             else

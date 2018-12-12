@@ -59,15 +59,13 @@ namespace SalesManagementApp
             ItemDto item = ListInItem[listBox1.SelectedIndex];
             ChangeItem change = new ChangeItem(item);
             change.ShowDialog();
-            foreach (ItemDto i in ListInItem)
-            {
-                if (i.Id.Equals(i.Id))
-                {
-                    //itemを更新後に入れ替え
-                    ListInItem.Remove(i);
-                    ListInItem.Add(change.Item);
-                }
-            }
+
+            StockDto stock = item.Stock;
+            CustomerDto customer = item.Customer;
+            ListInItem.RemoveAll(i => i.Id.Equals(change.Item.Id));
+            change.Item.Stock = stock;
+            change.Item.Customer = customer;
+            ListInItem.Add(change.Item);
             listBox1.Items.Clear();
             ListInItem.ForEach(v => listBox1.Items.Add($"{v.Id}：{v.Name}"));
 
